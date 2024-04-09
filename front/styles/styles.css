@@ -1,0 +1,142 @@
+@font-face {
+    font-family: 'TiltNeon';
+    src: url('../assets/Tilt_Neon/TiltNeon-Regular-VariableFont.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'IndieFlower';
+    src: url('../assets/Indie_Flower/IndieFlower-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'TiltNeon';
+    font-size: 2em;
+    background-image: radial-gradient(circle at top right, rgb(78, 78, 78) 0%, rgb(78, 78, 78) 1%,rgb(72, 72, 72) 1%, rgb(72, 72, 72) 10%,rgb(65, 65, 65) 10%, rgb(65, 65, 65) 22%,rgb(59, 59, 59) 22%, rgb(59, 59, 59) 23%,rgb(53, 53, 53) 23%, rgb(53, 53, 53) 28%,rgb(46, 46, 46) 28%, rgb(46, 46, 46) 37%,rgb(40, 40, 40) 37%, rgb(40, 40, 40) 100%);
+    color: rgb(91,192,190);
+}
+
+header {
+    font-size: 3em;
+    font-weight: bolder;
+    text-align: center;
+    padding: 30px;
+    margin: 30px;
+    background-color: rgb(10, 10, 10, 0.5);
+    border-radius: 10px;
+}
+
+main {
+    text-align: center;
+    padding: 30px;
+    margin: 30px;
+    background-color: rgb(10, 10, 10, 0.5);
+    border-radius: 10px;
+}
+
+nav ul {
+    font-size: 0.3em;
+    display: flex;
+    flex-direction: row;
+    justify-content:right;
+    padding: 15px;
+}
+
+nav ul li {
+    margin-left: 50px
+}
+
+section h1 {
+    margin: 20px;
+}
+
+.aboutMe h2 {
+    font-size: 1.5em;
+    padding-bottom: 30px;
+    text-align: right;
+}
+
+footer {
+    text-align: center;
+}
+
+#contentB {
+    font-size: 0.7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#contentB h2 {
+    font-size: 1.5em;
+}
+
+.container {
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 15px;
+    position: relative;
+    width: 350px;
+    height: 450px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flipped .content:first-child {
+    transform: rotateY(-180deg);
+}
+
+.flipped .content:last-child {
+    transform: rotateY(0deg);
+    display: block;
+    backface-visibility: hidden;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content:first-child {
+    transform: rotateY(0deg);
+}
+
+.content:last-child {
+    transform: rotateY(180deg);
+    display: none;
+}
+
+
+.divCardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas automáticas con un mínimo de 200px */
+    gap: 20px; /* Espacio entre las "cards" */
+}
+
+.poster {
+    width: 6em;
+}
+
+.aboutMe {
+    display: flex;
+    align-items: center;
+}
+
+.aboutMe p {
+    text-align: right;
+    font-size: 0.8em;
+}
+
+.foto {
+    height: 300px;
+    width: auto;
+    margin-left: 1em;
+    margin-right: 1em;
+    border-radius: 15%;
+}
