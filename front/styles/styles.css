@@ -3,11 +3,6 @@
     src: url('../assets/Tilt_Neon/TiltNeon-Regular-VariableFont.ttf') format('truetype');
 }
 
-@font-face {
-    font-family: 'IndieFlower';
-    src: url('../assets/Indie_Flower/IndieFlower-Regular.ttf') format('truetype');
-}
-
 body {
     font-family: 'TiltNeon';
     font-size: 2em;
@@ -19,10 +14,12 @@ header {
     font-size: 3em;
     font-weight: bolder;
     text-align: center;
-    padding: 30px;
+    padding: 15px;
     margin: 30px;
     background-color: rgb(10, 10, 10, 0.5);
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
@@ -52,6 +49,9 @@ section h1 {
 .aboutMe h2 {
     font-size: 1.5em;
     padding-bottom: 30px;
+}
+
+.aboutMe h2 {
     text-align: right;
 }
 
@@ -139,4 +139,45 @@ footer {
     margin-left: 1em;
     margin-right: 1em;
     border-radius: 15%;
+}
+
+.logo {
+    border-radius: 50%;
+    border: rgb(91,192,190) solid 4px;
+    height: 100px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icon {
+    padding: 30px;
+    width: 150px;
+}
+
+.websReco h2,
+.contact div h2,
+.contact div p {
+    padding: 30px;
+}
+
+.websReco h2,
+.contact div h2 {
+    font-size: 1.5em;
+}
+
+.logoWebs {
+    width: 200px;
+}
+
+.logos {
+    background-color: rgb(255,255,255,0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

@@ -73,12 +73,13 @@ function moviesHTML () {
     });
 }
 
-for (let i = 0; i < tempData.length; i++) {
-    const {title, year, director, duration, genre, rate, poster} = tempData[i];
-    repo.createMovie(title, year, director, duration, genre, rate, poster);
-
-    moviesHTML();
-
-    console.log("Hola");
-
+const getMovies = (movies) => {
+    for (let i = 0; i < movies.length; i++) {
+        const {title, year, director, duration, genre, rate, poster} = movies[i];
+        repo.createMovie(title, year, director, duration, genre, rate, poster);
+    
+        moviesHTML();
+    } 
 }
+
+$.get('https://students-api.up.railway.app/movies', getMovies);
