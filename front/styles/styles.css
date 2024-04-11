@@ -71,7 +71,7 @@ footer {
     font-size: 1.5em;
 }
 
-.container {
+.containerMovie {
     background-color: rgb(255, 255, 255, 0.1);
     border-radius: 15px;
     position: relative;
@@ -147,7 +147,7 @@ footer {
     height: 100px;
 }
 
-.header {
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -174,10 +174,14 @@ footer {
     width: 200px;
 }
 
-.logos {
+/* .logos {
     background-color: rgb(255,255,255,0.1);
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+} */
+
+.colorBtn {
+    background-color: rgb(91,192,190);
 }

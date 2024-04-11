@@ -46,7 +46,7 @@ function movieHTML (movie) {
     newUl.appendChild(newLi_3);
     newUl.appendChild(newLi_4);
 
-    newDiv_1.classList.add("container");
+    newDiv_1.classList.add("containerMovie");
     newDiv_1.id = "container";
     newDiv_1.onclick = function () {
         rotar(this);
@@ -58,6 +58,8 @@ function movieHTML (movie) {
     newDiv_3.id = "contentB";
 
     newImg.classList.add("poster");
+    newH2_1.classList.add("mx-3");
+    newH2_2.classList.add("mx-3");
 
     return newDiv_1;
 }
@@ -82,4 +84,4 @@ const getMovies = (movies) => {
     } 
 }
 
-$.get('https://students-api.up.railway.app/movies', getMovies);
+$.get('https://students-api.up.railway.app/movies', getMovies).fail(()=>alert('Error al traer las películas'));
