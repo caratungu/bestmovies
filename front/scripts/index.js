@@ -1,3 +1,5 @@
+const {Movie, Repository} = require("./models");
+
 function rotar(container) {
     container.classList.toggle('flipped');
 }

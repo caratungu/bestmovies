@@ -36,3 +36,8 @@ class Repository {
         });
     };
 };
+
+module.exports = {
+    Movie,
+    Repository
+}

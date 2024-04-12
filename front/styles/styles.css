@@ -184,4 +184,11 @@ footer {
 
 .colorBtn {
     background-color: rgb(91,192,190);
+    
+}
+
+button:hover {
+    background-color: rgb(255,255,255);
+    color: rgb(91,192,190);
+    
 }
