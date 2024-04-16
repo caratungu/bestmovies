@@ -16,7 +16,7 @@ class CarritoCompra {
     }
 
     aplicarDescuento (porcentaje) {
-        return this.calcularTotal()*(1-porcentaje);
+        return this.calcularTotal()*((100-porcentaje)/100);
     }
 }
 
