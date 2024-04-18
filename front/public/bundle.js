@@ -1990,7 +1990,7 @@
         t = n(425);
       (async () => {
         try {
-          const n = await t.get("https://students-api.up.railway.app/movies");
+          const n = await t.get("http://localhost:3000/movies");
           e(n.data);
         } catch (e) {
           alert("Error al cargar las películas");
