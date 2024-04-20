@@ -1,6 +1,6 @@
-const axios = require("axios");
+const Movie = require('../models/Movie')
 
-class Movie {
+class MovieC {
     constructor (title, year, director, duration, genre, rate, poster) {
       if (!title || !poster || !director) {
         return res.status(400).json({
@@ -21,21 +21,17 @@ class Movie {
 let allMovies = [];
 
 module.exports = {
-  getMovies: async (req, res) => {
-    try {
-      const movies = await axios.get("https://students-api.up.railway.app/movies");
-      let position = 0;
-      for(let movie of movies.data) {
+  getMovies: async () => {
+    const movies = await Movie.find();
+    let position = 0;
+    for(let movie of movies) {
         const { title, year, director, duration, genre, rate, poster } = movie;
-        const newMovie = new Movie (title, year, director, duration, genre, rate, poster);
+        const newMovie = new MovieC (title, year, director, duration, genre, rate, poster);
         allMovies[position]=newMovie;
         position++;
-      };
-      return allMovies;
-      res.status(200).json(movies.data);
-    } catch (error) {
-      alert("Error al cargar las películas");
-    }
+    };
+    return allMovies;
+    // res.status(200).json(movies.data);
   },
 
   createMovie: async(title, year, director, duration, genre, rate, poster) => {
