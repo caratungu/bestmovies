@@ -35,8 +35,10 @@ module.exports = {
   },
 
   createMovie: async(title, year, director, duration, genre, rate, poster) => {
-    const newMovie = new Movie(title, year, director, duration, genre, rate, poster);
+    const newMovie = new MovieC(title, year, director, duration, genre, rate, poster);
+    const addMovie = await Movie.create(newMovie);
     allMovies.push(newMovie);
+    return addMovie;
   }
 };
 
