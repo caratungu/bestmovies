@@ -197,7 +197,24 @@ footer {
 
 .colorBtn {
     background-color: rgb(91,192,190);
-    
+    border: rgb(91,192,190);
+}
+
+#agregar:hover,
+#cleanFields:hover,
+#preview:hover {
+    background-color: white;
+    color: rgb(91,192,190);
+}
+
+#agregar:disabled {
+    background-color: rgb(96, 146, 145);
+}
+
+.preview {
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover {
