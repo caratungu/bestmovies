@@ -1,4 +1,5 @@
 const { Movie, Repository } = require("./clases");
+const axios = require('axios');
 
 function rotar(container) {
   container.classList.toggle("flipped");
@@ -88,157 +89,93 @@ function getMovies(movies) {
 }
 
 function preview() {
-  const inputTitle = document.getElementById("inputTitle").value;
-  const inputUrl = document.getElementById("inputUrl").value;
-  const inputRate = document.getElementById("inputRate").value;
-  const inputYear = document.getElementById("inputYear").value;
-  const inputDirector = document.getElementById("inputDirector").value;
-  const inputDuration = document.getElementById("inputDuration").value;
-  const genre = [];
-  const inputAction = document.getElementById("inputAction");
-  if (inputAction.checked) {
-    genre.push("Action");
-  }
-  const inputAdventure = document.getElementById("inputAdventure");
-  if (inputAdventure.checked) {
-    genre.push("Adventure");
-  }
-  const inputComedy = document.getElementById("inputComedy");
-  if (inputComedy.checked) {
-    genre.push("Comedy");
-  }
-  const inputDrama = document.getElementById("inputDrama");
-  if (inputDrama.checked) {
-    genre.push("Drama");
-  }
-  const inputFantasy = document.getElementById("inputFantasy");
-  if (inputFantasy.checked) {
-    genre.push("Fantasy");
-  }
-  const inputSciFi = document.getElementById("inputSciFi");
-  if (inputSciFi.checked) {
-    genre.push("Sci-fi");
-  }
+  const getInputValue = (id) => document.getElementById(id).value;
+  const inputFields = {
+    inputTitle: getInputValue('inputTitle'),
+    inputUrl: getInputValue('inputUrl'),
+    inputRate: getInputValue('inputRate'),
+    inputYear: getInputValue('inputYear'),
+    inputDirector: getInputValue('inputDirector'),
+    inputDuration: getInputValue('inputDuration'),
+  };
+  
+  const genres = ["Action", "Adventure", "Comedy", "Drama", "Fantasy", "Sci-fi"];
+  const isChecked = (id) => document.getElementById(id).checked;
+  const selectedGenres = genres.filter((genre) => isChecked(`input${genre}`));
 
-  if (
-    !inputTitle ||
-    !inputYear ||
-    !inputDirector ||
-    !inputDuration ||
-    !inputRate ||
-    !inputUrl ||
-    genre.length < 1
-  ) {
+  const missingInput = Object.values(inputFields).some(value => !value) || selectedGenres.length === 0;
+  if (missingInput) {
     alert("Falta completar información");
-  } else {
-    const demoTitle = document.getElementById("inpTitle");
-    demoTitle.textContent = inputTitle;
-
-    const demoTitle2 = document.getElementById("inpTitle2");
-    demoTitle2.textContent = inputTitle;
-
-    const demoUrl = document.getElementById("inpImg");
-    demoUrl.src = inputUrl;
-
-    const demoRate = document.getElementById("inpRate");
-    demoRate.textContent = `Rate: ${inputRate}`;
-
-    const demoYear = document.getElementById("inpYear");
-    demoYear.textContent = `Año: ${inputYear}`;
-
-    const demoDirector = document.getElementById("inpDirector");
-    demoDirector.textContent = `Director: ${inputDirector}`;
-
-    const demoGenre = document.getElementById("inpGenre");
-    demoGenre.textContent = "Género: " + genre.join(" - ");
-
-    const demoDuration = document.getElementById("inpDuration");
-    demoDuration.textContent = `Duración: ${inputDuration}`;
-
-    const div1 = document.getElementById("container");
-    div1.onclick = function () {
-      rotar(this);
-    };
-
-    const addBtn = document.getElementById("agregar");
-    addBtn.disabled = false;
-
+    return;
   }
+
+  const setElementText = (id, text) => document.getElementById(id).textContent = text;
+  setElementText("inpTitle", inputFields.inputTitle);
+  setElementText("inpTitle2", inputFields.inputTitle);
+  setElementText("inpRate", `Rate: ${inputFields.inputRate}`);
+  setElementText("inpYear", `Año: ${inputFields.inputYear}`);
+  setElementText("inpDirector", `Director: ${inputFields.inputDirector}`);
+  setElementText("inpGenre", "Género: " + selectedGenres.join(" - "));
+  setElementText("inpDuration", `Duración: ${inputFields.inputDuration}`);
+
+  document.getElementById("inpImg").src = inputFields.inputUrl;
+
+  const div1 = document.getElementById("container");
+  div1.onclick = function () {
+    rotar(this);
+  };
+
+  document.getElementById("agregar").disabled = false;
+
 }
 
 function cleanFields() {
-  const demoTitle = document.getElementById("inpTitle");
-  demoTitle.textContent = "";
-
-  const demoUrl = document.getElementById("inpImg");
-  demoUrl.src = "";
-
-  const demoRate = document.getElementById("inpRate");
-  demoRate.textContent = "";
-
-  const demoTitle2 = document.getElementById("inpTitle2");
-  demoTitle2.textContent = "";
-
-  const demoYear = document.getElementById("inpYear");
-  demoYear.textContent = "";
-
-  const demoDirector = document.getElementById("inpDirector");
-  demoDirector.textContent = "";
-
-  const demoDuration = document.getElementById("inpDuration");
-  demoDuration.textContent = "";
-
-  const demoGenre = document.getElementById("inpGenre");
-  demoGenre.textContent = "";
-
-  const addBtn = document.getElementById("agregar");
-  addBtn.disabled = true;
+  document.getElementById("inpTitle").textContent = "";
+  document.getElementById("inpImg").src = "";
+  document.getElementById("inpRate").textContent = "";
+  document.getElementById("inpTitle2").textContent = "";
+  document.getElementById("inpYear").textContent = "";
+  document.getElementById("inpDirector").textContent = "";
+  document.getElementById("inpDuration").textContent = "";
+  document.getElementById("inpGenre").textContent = "";
+  document.getElementById("agregar").disabled = true;
 }
 
 function addMovie() {
-  const inputTitle = document.getElementById("inputTitle").value;
-  const inputUrl = document.getElementById("inputUrl").value;
-  const inputRate = document.getElementById("inputRate").value;
-  const inputYear = document.getElementById("inputYear").value;
-  const inputDirector = document.getElementById("inputDirector").value;
-  const inputDuration = document.getElementById("inputDuration").value;
-  const genre = [];
-  const inputAction = document.getElementById("inputAction");
-  if (inputAction.checked) {
-    genre.push("Action");
-  }
-  const inputAdventure = document.getElementById("inputAdventure");
-  if (inputAdventure.checked) {
-    genre.push("Adventure");
-  }
-  const inputComedy = document.getElementById("inputComedy");
-  if (inputComedy.checked) {
-    genre.push("Comedy");
-  }
-  const inputDrama = document.getElementById("inputDrama");
-  if (inputDrama.checked) {
-    genre.push("Drama");
-  }
-  const inputFantasy = document.getElementById("inputFantasy");
-  if (inputFantasy.checked) {
-    genre.push("Fantasy");
-  }
-  const inputSciFi = document.getElementById("inputSciFi");
-  if (inputSciFi.checked) {
-    genre.push("Sci-fi");
-  }
-
+  const getInputValue = (id) => document.getElementById(id).value;
+  const inputFields = {
+    inputTitle: getInputValue('inputTitle'),
+    inputUrl: getInputValue('inputUrl'),
+    inputRate: getInputValue('inputRate'),
+    inputYear: getInputValue('inputYear'),
+    inputDirector: getInputValue('inputDirector'),
+    inputDuration: getInputValue('inputDuration'),
+  };
+  
+  const isChecked = (id) => document.getElementById(id).checked;
+  const genres = ["Action", "Adventure", "Comedy", "Drama", "Fantasy", "Sci-fi"];
+  const selectedGenres = genres.filter(genre => isChecked(`input${genre}`));
+  
   const newMovie = {
-    title: inputTitle,
-    year: inputYear,
-    director: inputDirector,
-    duration: inputDuration,
-    genre: genre,
-    rate: inputRate,
-    poster: inputUrl,
+    title: inputFields.inputTitle,
+    year: inputFields.inputYear,
+    director: inputFields.inputDirector,
+    duration: inputFields.inputDuration,
+    genre: selectedGenres,
+    rate: inputFields.inputRate,
+    poster: inputFields.inputUrl,
+  };
+  
+  const postMovie = async () => {
+    try {
+      await axios.post("http://localhost:3000/movies", newMovie);
+      alert("Película cargada exitosamente");
+    } catch (error) {
+      alert("Error al agregar la película");
+    }
   };
 
-  console.log(newMovie);
+  postMovie();
 
 }
 

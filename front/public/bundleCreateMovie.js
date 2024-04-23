@@ -257,8 +257,8 @@
           b = c("File"),
           w = c("Blob"),
           O = c("FileList"),
-          R = c("URLSearchParams");
-        function v(e, t, { allOwnKeys: n = !1 } = {}) {
+          v = c("URLSearchParams");
+        function R(e, t, { allOwnKeys: n = !1 } = {}) {
           if (null == e) return;
           let r, o;
           if (("object" != typeof e && (e = [e]), l(e)))
@@ -301,15 +301,15 @@
           D = (e, t) => {
             const n = Object.getOwnPropertyDescriptors(e),
               r = {};
-            v(n, (n, o) => {
+            R(n, (n, o) => {
               let i;
               !1 !== (i = t(n, o, e)) && (r[o] = i || n);
             }),
               Object.defineProperties(e, r);
           },
-          P = "abcdefghijklmnopqrstuvwxyz",
-          L = "0123456789",
-          _ = { DIGIT: L, ALPHA: P, ALPHA_DIGIT: P + P.toUpperCase() + L },
+          L = "abcdefghijklmnopqrstuvwxyz",
+          P = "0123456789",
+          _ = { DIGIT: P, ALPHA: L, ALPHA_DIGIT: L + L.toUpperCase() + P },
           F = c("AsyncFunction");
         var U = {
           isArray: l,
@@ -358,10 +358,10 @@
           isRegExp: B,
           isFunction: h,
           isStream: (e) => g(e) && h(e.pipe),
-          isURLSearchParams: R,
+          isURLSearchParams: v,
           isTypedArray: C,
           isFileList: O,
-          forEach: v,
+          forEach: R,
           merge: function e() {
             const { caseless: t } = (A(this) && this) || {},
               n = {},
@@ -376,11 +376,11 @@
                   : (n[i] = r);
               };
             for (let e = 0, t = arguments.length; e < t; e++)
-              arguments[e] && v(arguments[e], r);
+              arguments[e] && R(arguments[e], r);
             return n;
           },
           extend: (e, t, n, { allOwnKeys: o } = {}) => (
-            v(
+            R(
               t,
               (t, o) => {
                 n && h(t) ? (e[o] = r(t, n)) : (e[o] = t);
@@ -509,7 +509,7 @@
                     t[r] = e;
                     const o = l(e) ? [] : {};
                     return (
-                      v(e, (e, t) => {
+                      R(e, (e, t) => {
                         const i = n(e, r + 1);
                         !d(i) && (o[t] = i);
                       }),
@@ -1357,7 +1357,7 @@
             (u[t ? "download" : "upload"] = !0), e(u);
           };
         }
-        const Re = {
+        const ve = {
           http: null,
           xhr:
             "undefined" != typeof XMLHttpRequest &&
@@ -1537,7 +1537,7 @@
               });
             },
         };
-        U.forEach(Re, (e, t) => {
+        U.forEach(ve, (e, t) => {
           if (e) {
             try {
               Object.defineProperty(e, "name", { value: t });
@@ -1545,7 +1545,7 @@
             Object.defineProperty(e, "adapterName", { value: t });
           }
         });
-        const ve = (e) => `- ${e}`,
+        const Re = (e) => `- ${e}`,
           Se = (e) => U.isFunction(e) || null === e || !1 === e;
         var Te = (e) => {
           e = U.isArray(e) ? e : [e];
@@ -1557,7 +1557,7 @@
             if (
               ((n = e[i]),
               (r = n),
-              !Se(n) && ((r = Re[(t = String(n)).toLowerCase()]), void 0 === r))
+              !Se(n) && ((r = ve[(t = String(n)).toLowerCase()]), void 0 === r))
             )
               throw new k(`Unknown adapter '${t}'`);
             if (r) break;
@@ -1575,8 +1575,8 @@
               "There is no suitable adapter to dispatch the request " +
                 (t
                   ? e.length > 1
-                    ? "since :\n" + e.map(ve).join("\n")
-                    : " " + ve(e[0])
+                    ? "since :\n" + e.map(Re).join("\n")
+                    : " " + Re(e[0])
                   : "as no adapter specified"),
               "ERR_NOT_SUPPORT"
             );
@@ -1761,8 +1761,8 @@
           },
           validators: Ne,
         };
-        const Pe = De.validators;
-        class Le {
+        const Le = De.validators;
+        class Pe {
           constructor(e) {
             (this.defaults = e),
               (this.interceptors = { request: new X(), response: new X() });
@@ -1794,9 +1794,9 @@
               De.assertOptions(
                 n,
                 {
-                  silentJSONParsing: Pe.transitional(Pe.boolean),
-                  forcedJSONParsing: Pe.transitional(Pe.boolean),
-                  clarifyTimeoutError: Pe.transitional(Pe.boolean),
+                  silentJSONParsing: Le.transitional(Le.boolean),
+                  forcedJSONParsing: Le.transitional(Le.boolean),
+                  clarifyTimeoutError: Le.transitional(Le.boolean),
                 },
                 !1
               ),
@@ -1805,7 +1805,7 @@
                   ? (t.paramsSerializer = { serialize: r })
                   : De.assertOptions(
                       r,
-                      { encode: Pe.function, serialize: Pe.function },
+                      { encode: Le.function, serialize: Le.function },
                       !0
                     )),
               (t.method = (
@@ -1877,7 +1877,7 @@
           }
         }
         U.forEach(["delete", "get", "head", "options"], function (e) {
-          Le.prototype[e] = function (t, n) {
+          Pe.prototype[e] = function (t, n) {
             return this.request(
               je(n || {}, { method: e, url: t, data: (n || {}).data })
             );
@@ -1896,9 +1896,9 @@
                 );
               };
             }
-            (Le.prototype[e] = t()), (Le.prototype[e + "Form"] = t(!0));
+            (Pe.prototype[e] = t()), (Pe.prototype[e + "Form"] = t(!0));
           });
-        var _e = Le;
+        var _e = Pe;
         class Fe {
           constructor(e) {
             if ("function" != typeof e)
@@ -2081,15 +2081,10 @@
     }
   })()),
     (() => {
-      const { getMovies: e } = n(859),
-        t = n(425);
-      (async () => {
-        try {
-          const n = await t.get("http://localhost:3000/movies");
-          e(n.data);
-        } catch (e) {
-          alert("Error al cargar las películas");
-        }
-      })();
+      const { preview: e, cleanFields: t, addMovie: r } = n(859);
+      document.querySelector("#preview").addEventListener("click", e),
+        document.querySelector("#cleanFields").addEventListener("click", t);
+      const o = document.querySelector("#agregar");
+      (o.disabled = !0), o.addEventListener("click", r);
     })();
 })();
