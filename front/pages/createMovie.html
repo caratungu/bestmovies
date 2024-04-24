@@ -50,61 +50,37 @@
       </section>
       <section class="d-flex">
         <form class="row g-3 needs-validation border border-4 rounded-3 m-2 p-3 col-md-8">
-            <h2 class="mb-5 fs-1">Película para agregar</h2>
+            <h2 class="mb-5 fs-1 fw-bold">Película para agregar</h2>
             <div class="col-md-12">
-            <label for="inputTitle" class="form-label">Título</label>
+            <label for="inputTitle" class="form-label fw-bold">Título</label>
             <input type="text" placeholder="Título de la película" class="text-center form-control" id="inputTitle" required/>
             <div class="valid-feedback">Looks good!</div>
             </div>
             <div class="col-md-4">
-            <label for="inputYear" class="form-label">Año</label>
-            <input type="number" placeholder="AAAA" class="text-center form-control" id="inputYear" required/>
+            <label for="inputYear" class="form-label fw-bold">Año</label>
+            <input type="number" placeholder="AAAA" min="1000" max="9999" class="text-center form-control" id="inputYear" required/>
             <div class="valid-feedback">Looks good!</div>
             </div>
             <div class="col-md-4">
-            <label for="inputDirector" class="form-label">Director</label>
+            <label for="inputDirector" class="form-label fw-bold">Director</label>
             <input type="text" placeholder="Nombre del director" class="text-center form-control" id="inputDirector" aria-describedby="inputGroupPrepend" required/>
             <div class="invalid-feedback">Please choose a username.</div>
             </div>
             <div class="col-md-4">
-            <label for="inputDuration" class="form-label">Duración</label>
+            <label for="inputDuration" class="form-label fw-bold">Duración</label>
             <input type="text" placeholder="ej. 1h 35min" class="text-center form-control" id="inputDuration" required/>
             <div class="invalid-feedback">Please provide a valid city.</div>
             </div>
-            <fieldset class="border border-2 rounded-3 col-md-12 p-4">
-            <legend>Género</legend>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inputAction" value="Action">
-                <label class="form-check-label" for="inputAction">Acción</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inputAdventure" value="Adventure">
-                <label class="form-check-label" for="inputAdventure">Aventura</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inputComedy" value="Comedy">
-                <label class="form-check-label" for="inputComedy">Comedia</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inputDrama" value="Drama">
-                <label class="form-check-label" for="inputDrama">Drama</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inputFantasy" value="Fantasy">
-                <label class="form-check-label" for="inputFantasy">Fantasia</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inputSci-fi" value="Sci-fi">
-                <label class="form-check-label" for="inputSci-fi">Sci-fi</label>
-            </div>
+            <fieldset class="border border-2 rounded-3 col-md-12 p-4" id="inputGenres">
+            
             </fieldset>
-            <div class="col-md-2">
-            <label for="inputRate" class="form-label">Rate</label>
-            <input type="number" step="0.1" placeholder="Hasta 10" class="text-center form-control" id="inputRate" required/>
+            <div class="col-md-3">
+            <label for="inputRate" class="form-label fw-bold">Calificación</label>
+            <input type="number" min="0" max="10" step="0.1" placeholder="Hasta 10" class="text-center form-control" id="inputRate" required/>
             <div class="invalid-feedback">Please select a valid state.</div>
             </div>
-            <div class="col-md-10">
-            <label for="inputUrl" class="form-label">Link del poster</label>
+            <div class="col-md-9">
+            <label for="inputUrl" class="form-label fw-bold">Link del poster</label>
             <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend">url:</span>
                 <input type="text" placeholder="Debe terminar en formato de imagen válido (ej .jpg)" class="form-control" id="inputUrl" required/>

@@ -1,4 +1,4 @@
-const { getMovies } = require("./functions");
+const { getMovies } = require("./functionsIndex");
 const axios = require("axios");
 
 const fetchMovies = async () => {

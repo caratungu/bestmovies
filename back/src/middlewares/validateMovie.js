@@ -1,13 +1,11 @@
 const validateMovie = (req, res, next) => {
     const { title, year, director, duration, genre, rate, poster } = req.body;
     if(!title || !year || !director || !duration || !rate || !poster  || genre.length < 1) {
-        // throw new Error ("Información incompleta")
         return res.status(400).json({
             error: "Información incompleta",
         });
     };
-    if (year < 1000 || year > 9999 ) {
-        // throw new Error ("El año debe se un número de cuatro dígitos");
+    if (year.toString().length != 4) {
         return res.status(400).json({
             error: "El año debe se un número de cuatro dígitos",
         });

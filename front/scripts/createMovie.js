@@ -1,4 +1,6 @@
-const { preview, cleanFields, addMovie } = require("./functions");
+const { preview, cleanFields, addMovie, addGenresCheck } = require("./functionsCreateMovies");
+
+addGenresCheck();
 
 const preBtn = document.querySelector("#preview");
 preBtn.addEventListener("click", preview);
